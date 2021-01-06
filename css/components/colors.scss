@@ -1,0 +1,171 @@
+.colors {
+    display: flex;
+    flex-direction: row;   
+    position: relative; 
+    
+
+    background: url(../img/icons_png/colors1.png) center center/cover no-repeat;
+}
+
+.colors-container {
+    width: 100vw;
+    height: 100vh;
+    
+    background-size: 120%;
+}
+
+.colors-title {
+    position: absolute;
+    top: 15%;
+    left: 6%;
+    z-index: 1;
+    color: #ffffff;
+    
+
+    @include phones {
+        left: 2%;
+        top: 13%;
+    }
+
+}
+
+.colors__list {
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    position: relative;
+
+    flex: 1;
+
+    transition: 0.5s;
+
+    height: 100%;
+}
+
+.colors__item {
+    height: 100%;
+    display: flex;
+
+    flex-shrink: 0;
+    
+}
+
+.color__title {
+    font-family: Alegreya Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: rem(36px);
+    line-height: rem(43px);
+    color: #FFFFFF;
+
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+
+    transition: 0.5s;
+
+    padding: 30px 32px;
+    height: 100%;
+
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+
+
+    @include phones {
+        padding: 24px 26px;
+    }
+}
+
+.color.gray {
+    background: #999999;
+
+
+}
+
+.color.black {
+    background: #151515;
+
+
+}
+
+.color.red {
+    background: #E01F3C;
+
+
+}
+
+.color__description {
+    width: 0;
+    overflow: hidden;
+
+    transition: 0.5s;
+
+    font-family: Alegreya Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+
+    position: relative;
+}
+
+.active-description {
+    width: 500px;
+
+    padding: 31px 38px;
+
+    @include tablets {
+        //width: 0;
+    }
+}
+
+.color__description-text {
+    font-family: Alegreya Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+
+    width: 420px;
+
+    @include tablets {
+        width: 95%;
+    }
+    
+}
+
+.gray .color__description {
+    background-color: #7a7878;
+    
+}
+
+.black .color__description {
+    background-color: #2e2e2e;
+}
+
+.red .color__description {
+    background-color: #a7162c;
+}
+
+.color__close-button {
+    position: absolute;
+    top: 1.5%;
+    right: 4%;
+
+    cursor: pointer;
+
+    @include tablets {
+        display: none;
+    }
+}
+
+.color__close-icon {
+    height: 15px;
+    width: 15px;
+
+    fill: #FFFFFF;
+}

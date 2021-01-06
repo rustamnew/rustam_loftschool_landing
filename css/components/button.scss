@@ -1,0 +1,39 @@
+.button {
+    display: inline-block;
+    width: rem(165px);
+    height: rem(52px);
+    border-radius: rem(100px);
+    background-color: #E01F3D;
+    font-family: Play;
+    font-style: normal;
+    font-weight: bold;
+    font-size: rem(16px);
+    line-height: rem(18px);
+    color: #ffffff;
+    text-transform: uppercase;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    padding: rem(18px) rem(41px);
+    cursor: pointer;
+
+    &:hover {
+        background-color: #CA1B36;
+    }
+
+    &-input {
+        outline: none;
+    }
+
+    &-transparent {
+        background: transparent;
+        font-weight: normal;
+
+        &:hover {
+            background: transparent;
+            text-decoration: underline;
+        }
+    }
+
+    
+}

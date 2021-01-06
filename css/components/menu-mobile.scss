@@ -1,0 +1,55 @@
+.menu-mobile {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: #333537;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 100;
+
+    display: none;
+}
+
+.menu-mobile__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-mobile__item {
+    font-family: Play;
+    font-style: normal;
+    font-weight: normal;
+    font-size: rem(36px);
+    line-height: rem(72px);
+    color: #FFFFFF;
+
+    text-decoration: none;
+
+    &-link {
+        text-decoration: none;
+    }
+}
+
+.menu-mobile__close {
+    cursor: pointer;
+
+    position: fixed;
+    top: 4%;
+    right: 5%;
+}
+
+.menu-mobile__close-icon {
+    width: rem(20px);
+    height: rem(20px);
+
+    fill: #FFFFFF;
+}
+
+
