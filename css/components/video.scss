@@ -10,128 +10,16 @@
 
 .player-section__container {
     width: 660px;
-    height: 405px;
 
     @include tablets {
-        width: 596px;
-        height: 352px;
+        width: 480px;
     }
 
     @include phones {
-        width: 394px;
-        height: 234px;
+        width: 360px;
     }
 }
 
-.player {
-    position: relative;
+.video-player {
     width: 100%;
-    height: 100%;
-}
-
-.player__splash {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    //background: url(../img/icons_png/video-preview.png) no-repeat;
-}
-
-.player__controls {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 35px;
-    background: #151515;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
-}
-
-.player__start {
-    width: 15px;
-    height: 16px;
-    background: url(../img/icons_png/video-play.png) left center no-repeat;
-    //background: url(../../img/icons_png/video-pause.png) left center no-repeat;
-
-    cursor: pointer;
-}
-
-.player__playback {
-    width: 73%;
-    height: 4px;
-    background: #333333;
-    position: relative;
-    cursor: pointer;
-
-    &::before {
-        content: '';
-        height: 4px;
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        background: #626262;
-        display: block;
-        transform: translateY(-50%);
-    }
-
-    @include phones {
-        width: 68%;
-    }
-}
-
-.player__playback-button {
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    background: #E01F3D;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(-50%, -50%);
-}
-
-.player__volume {
-    display: flex;
-    align-items: center;
-}
-
-.player__volume-icon {
-    background: url(../../img/icons_png/video-volume.png);
-}
-
-.player__volume-level {
-    width: 62px;
-    height: 4px;
-    background: #333333;
-    position: relative;
-    cursor: pointer;
-
-    &::before {
-        content: '';
-        height: 4px;
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        background: #626262;
-        display: block;
-        transform: translateY(-50%);
-    }
-}
-
-.player__volume-level-button {
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    background: #E01F3D;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
 }

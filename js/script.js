@@ -365,7 +365,6 @@ if (windowWidth > 768) {
 const sections = $('.section');
 const display = $('.maincontent');
 
-
 const performTransition = sectionEq => {
     const position = sectionEq * -100;
 
@@ -424,17 +423,6 @@ $('[data-scroll-to]').click( e => {
 })
 
 
-
-
-
-//сделать через prev() next()
-
-
-
-
-
-
-
 //Яндекс карты
 
 let myMap;
@@ -472,159 +460,4 @@ const init = () => {
 }
 
 ymaps.ready(init);
-
-//video
-
-var player;
-const playerContainer = $(".player");
-
-
-
-
-const formatTime = timeSec => {
-    const roundTime = Math.round(timeSec);
-    
-    const minutes = addZero(Math.floor(roundTime / 60));
-    const seconds = addZero(roundTime - minutes * 60);
-    
-    function addZero(num) {
-      return num < 10 ? `0${num}` : num;
-    }
-    
-    return `${minutes} : ${seconds}`;
-};
-
-const onPlayerReady = () => {
-    let interval;
-    const durationSec = player.getDuration();
-    
-    $(".player__duration-estimate").text(formatTime(durationSec));
-    
-    if (typeof interval !== "undefined") {
-      clearInterval(interval);
-    }
-    
-    interval = setInterval(() => {
-        const completedSec = player.getCurrentTime();
-        const completedPercent = (completedSec / durationSec) * 100;
-      
-        $(".player__playback-button").css({
-          left: `${completedPercent}%`
-        });
-       
-        $(".player__duration-completed").text(formatTime(completedSec));
-    }, 1000);
-};
-
-$(".player__start").click(e => {
-    e.preventDefault();
-  
-    if (playerContainer.hasClass("paused")) {
-      playerContainer.removeClass("paused");
-      player.pauseVideo();
-      e.currentTarget.style.background = 'url(./img/icons_png/video-play.png) left center no-repeat'
-    } else {
-      playerContainer.addClass("paused");
-      player.playVideo();
-      e.currentTarget.style.background = 'url(./img/icons_png/video-pause.png) left center no-repeat';
-  
-    }
-  });
-  
-  $(".player__playback").click(e => {
-      const bar = $(e.currentTarget);
-      const clickedPosition = e.originalEvent.layerX;
-      
-      const newButtonPositionPercent = (clickedPosition / bar.width()) * 100;
-      const newPlaybackPositionSec =
-        (player.getDuration() / 100) * newButtonPositionPercent;
-      
-      $(".player__playback-button").css({
-        left: `${newButtonPositionPercent}%`
-      });
-      
-      player.seekTo(newPlaybackPositionSec);
-     });
-  
-  $(".player__volume-level").click(e => {
-      const bar1 = $(e.currentTarget);
-      const clickedPosition1 = e.originalEvent.layerX;
-      
-      const newButtonPositionPercent1 = (clickedPosition1 / bar1.width()) * 100;
-  
-      const newPlaybackPositionSec1 = (player.getVolume() / 100) 
-  
-      $(".player__volume-level-button").css({
-        left: `${newButtonPositionPercent1}%`
-      });
-      
-      player.setVolume(newButtonPositionPercent1);
-  
-     });
-  
-
-function onYouTubeIframeAPIReady() {
-    if (viewportWidth <= 480) {
-        console.log('test')
-        player = new YT.Player('yt-player', {
-            height: '234',
-            width: '394',
-            videoId: 'V2i1YkfrM54',
-            events: {
-              'onReady': onPlayerReady,
-              //'onStateChange': onPlayerStateChange
-            },
-            playerVars: {
-                controls: 0,
-                disablekb: 0,
-                showinfo: 0,
-                rel: 0,
-                autoplay: 0,
-                modestbranding: 0
-            }
-          });
-    }
-
-    if (viewportWidth <= 768) {
-        player = new YT.Player('yt-player', {
-            height: '352',
-            width: '596',
-            videoId: 'V2i1YkfrM54',
-            events: {
-              'onReady': onPlayerReady,
-              //'onStateChange': onPlayerStateChange
-            },
-            playerVars: {
-                controls: 0,
-                disablekb: 0,
-                showinfo: 0,
-                rel: 0,
-                autoplay: 0,
-                modestbranding: 0
-            }
-          });
-    }
-
-    if (viewportWidth > 768) {
-        player = new YT.Player('yt-player', {
-            height: '405',
-            width: '660',
-            videoId: 'V2i1YkfrM54',
-            events: {
-              'onReady': onPlayerReady,
-              //'onStateChange': onPlayerStateChange
-            },
-            playerVars: {
-                controls: 0,
-                disablekb: 0,
-                showinfo: 0,
-                rel: 0,
-                autoplay: 0,
-                modestbranding: 0
-            }
-          });        
-    }
-  
-}
-
 
