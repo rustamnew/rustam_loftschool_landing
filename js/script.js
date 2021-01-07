@@ -376,36 +376,38 @@ const performTransition = sectionEq => {
 var transitionNumber = 0;
 var inScroll = false;
 
-$(window).on('wheel', e => {
-    const deltaY = e.originalEvent.deltaY;
-
-    if (inScroll == false) {
-        inScroll = true;
-
-        if (transitionNumber > 0) {
-            if (deltaY < 0) {
-                transitionNumber--;
-                performTransition(transitionNumber);
+if (viewportWidth > 768) {
+    $(window).on('wheel', e => {
+        const deltaY = e.originalEvent.deltaY;
+    
+        if (inScroll == false) {
+            inScroll = true;
+    
+            if (transitionNumber > 0) {
+                if (deltaY < 0) {
+                    transitionNumber--;
+                    performTransition(transitionNumber);
+                }
             }
+        
+            if (transitionNumber < 8) {
+                if (deltaY > 0) {
+                    transitionNumber++;
+                    performTransition(transitionNumber);
+                }
+            }
+    
+            setTimeout(() => {
+                inScroll = false;
+            }, 200);
         }
     
-        if (transitionNumber < 8) {
-            if (deltaY > 0) {
-                transitionNumber++;
-                performTransition(transitionNumber);
-            }
-        }
-
-        setTimeout(() => {
-            inScroll = false;
-        }, 200);
-    }
-
-    const sideMenu = $('.fixed-menu');
-    sideMenu.find('.fixed-menu__item').removeClass('fixed-menu__item-active')
-    sideMenu.find('.fixed-menu__item').eq(transitionNumber).addClass('fixed-menu__item-active');
-
-})
+        const sideMenu = $('.fixed-menu');
+        sideMenu.find('.fixed-menu__item').removeClass('fixed-menu__item-active')
+        sideMenu.find('.fixed-menu__item').eq(transitionNumber).addClass('fixed-menu__item-active');
+    
+    })
+}
 
 $('[data-scroll-to]').click( e => {
     e.preventDefault();
@@ -429,7 +431,7 @@ let myMap;
 
 const init = () => {
     myMap = new ymaps.Map('map', {
-    center: [55.742049, 37.584159],
+    center: [55.7445, 37.584159],
     zoom: 15,
     controls: [],
     });
