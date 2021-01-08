@@ -43,9 +43,9 @@ body {
     height: 100%;
     overflow: hidden;
 
-    @include tablets {
-       overflow: visible;
-    }
+    //@include tablets {
+    //   overflow: visible;
+    //}
 }
 
 .maincontent {

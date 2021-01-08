@@ -33,11 +33,6 @@ body {
   height: 100%;
   overflow: hidden;
 }
-@media screen and (max-width: 768px) {
-  .wrapper {
-    overflow: visible;
-  }
-}
 
 .maincontent {
   height: 100%;

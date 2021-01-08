@@ -367,47 +367,76 @@ const display = $('.maincontent');
 
 const performTransition = sectionEq => {
     const position = sectionEq * -100;
-
     display.css({
         transform: `translateY(${position}%)`
     })
 }
 
+const sideUpdate = transitionNumber => {
+    const sideMenu = $('.fixed-menu');
+    sideMenu.find('.fixed-menu__item').removeClass('fixed-menu__item-active')
+    sideMenu.find('.fixed-menu__item').eq(transitionNumber).addClass('fixed-menu__item-active');
+}
+
 var transitionNumber = 0;
 var inScroll = false;
 
-if (viewportWidth > 768) {
-    $(window).on('wheel', e => {
-        const deltaY = e.originalEvent.deltaY;
+$(window).on('wheel', e => {
+    const deltaY = e.originalEvent.deltaY;
+
+    if (inScroll == false) {
+        inScroll = true;
+
+        if (transitionNumber > 0) {
+            if (deltaY < 0) {
+                transitionNumber--;
+                performTransition(transitionNumber);
+            }
+        }
     
+        if (transitionNumber < 8) {
+            if (deltaY > 0) {
+                transitionNumber++;
+                performTransition(transitionNumber);
+            }
+        }
+
+        setTimeout(() => {
+            inScroll = false;
+        }, 200);
+    }
+
+    sideUpdate(transitionNumber)
+})
+
+$("body").swipe( {
+    swipe:function(event, direction) {
         if (inScroll == false) {
             inScroll = true;
-    
+
             if (transitionNumber > 0) {
-                if (deltaY < 0) {
+                if (direction === 'down') {
                     transitionNumber--;
                     performTransition(transitionNumber);
                 }
             }
         
             if (transitionNumber < 8) {
-                if (deltaY > 0) {
+                if (direction === 'up') {
                     transitionNumber++;
                     performTransition(transitionNumber);
                 }
             }
-    
+
             setTimeout(() => {
                 inScroll = false;
             }, 200);
         }
-    
-        const sideMenu = $('.fixed-menu');
-        sideMenu.find('.fixed-menu__item').removeClass('fixed-menu__item-active')
-        sideMenu.find('.fixed-menu__item').eq(transitionNumber).addClass('fixed-menu__item-active');
-    
-    })
-}
+
+        sideUpdate(transitionNumber)
+    }
+});
+
 
 $('[data-scroll-to]').click( e => {
     e.preventDefault();
