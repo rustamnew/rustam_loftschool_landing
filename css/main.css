@@ -1599,7 +1599,7 @@ button {
   align-items: center;
   height: 0;
   overflow: hidden;
-  transition: 0.5s;
+  transition: 0.4s;
 }
 @media screen and (max-width: 768px) {
   .team__description-block {

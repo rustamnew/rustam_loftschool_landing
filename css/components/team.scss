@@ -136,7 +136,7 @@
     height: 0;
     overflow: hidden;
 
-    transition: 0.5s;
+    transition: 0.4s;
 
     &-block {
         @include tablets {
@@ -145,7 +145,7 @@
             align-items: center;
         }
     }
-}
+} 
 
 .team__description-title {
     font-family: Play;

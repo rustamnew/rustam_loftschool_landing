@@ -1,5 +1,4 @@
 //Мобильное меню
-
 const menuButton = document.querySelector('#menuButton');
 const menuCloseButton =document.querySelector('#menuCloseButton');
 const menuMobile = document.querySelector('.menu-mobile');
@@ -18,24 +17,20 @@ menuLink.forEach(e => e.addEventListener('click', function() {
 }));
 
 
-
-
 //Команда аккордеон
 const openCloseItem = item => {
     const container = item.closest('.team__item');
     const description = container.find('.team__description');
     const descriptionBlock = description.find('.team__description-block');
     const reqHeight = descriptionBlock.height();
-
     const name = container.find('.team__name');
-
 
     if (description.height() == 0) {
         description.height(reqHeight);
-        name.addClass('team__name-active')
+        name.addClass('active')
     } else {
         description.height(0);
-        name.removeClass('team__name-active')
+        name.removeClass('active')
     }
 }
 
@@ -44,23 +39,20 @@ const closeAll = container => {
     const names = container.find('.team__name');
 
     items.height(0);
-    names.removeClass('team__name-active');
+    names.removeClass('active');
 }
-
 
 $('.team__item').click(e => {
     const $this = $(e.currentTarget);
     const container = $this.closest('.team__list');
 
-    
-
     closeAll(container);
     openCloseItem($this);
 })
 
+
 // слайдер
 let viewportWidth = window.innerWidth;
-
 
 if (viewportWidth <= 768) {
     var slideWidth = viewportWidth - 80;
@@ -70,13 +62,11 @@ if (viewportWidth <= 480) {
     var slideWidth = viewportWidth - 10;
 }
 
-
 $('.slider__list').bxSlider({
     pager: false,
     adaptiveHeight: true,
     slideWidth: slideWidth
 });
-
 
 
 //слайдшоу
@@ -99,6 +89,7 @@ $('.reviews__selector-item').click((e) => {
 
 })
 
+
 //модальное окно
 $('.form').submit( e => {
     e.preventDefault();
@@ -108,11 +99,8 @@ $('.form').submit( e => {
     const phone = form.find("[name='phone']");
     const comment = form.find("[name='comment']");
     const to = form.find("[name='to']");
-
     const modal = $('#modal');
     const content = modal.find('.modal__content');
-
-
 
     [name, phone, comment,to].forEach(field => {
         field.removeClass('form__input-error');
@@ -132,7 +120,6 @@ $('.form').submit( e => {
                 comment:comment.val(),
                 to:to.val()
             },
-
             success: data => {
                 content.text(data.message)
 
@@ -141,45 +128,34 @@ $('.form').submit( e => {
                     type: 'inline',
                 })
             },
-
             error: data => {
                 const message = data.responseJSON.message;
                 content.text(message)
-
                 $.fancybox.open({
                     src: '#modal',
                     type: 'inline',
                 })
             },
         })
-
         const fields = $('.form__input');
         fields.val('');
     }
-
 })
 
 $('.submit-button').click( e => {
     e.preventDefault();
-
     $.fancybox.close();
 })
 
 
-
 //горизонтальный аккордеон
-
-
 const windowWidth = $(window).width();
 console.log(windowWidth)
 
 const mesureWidth = item => {
     const screenWidth = $(window).width();
-    
     const container = item.closest('.colors__list');
-
     const titleBlocks = container.find('.color__title');
-
     const titleWidth = titleBlocks.width() * titleBlocks.length;
 
     if (windowWidth <= 480) {
@@ -190,23 +166,16 @@ const mesureWidth = item => {
         const reqWidth = screenWidth - 3 * 104;
         const reqWidthString = reqWidth.toString() +'px';
         return reqWidthString
-    
     }
-
 }
 
 if (windowWidth > 768) {
     console.log('Аккордеон Desktop')
-
     $('.color__title').click( e => {
-
         const item = $(e.currentTarget);
-        
         const description = item.siblings('.color__description');
-    
         const items = $('.color__description');
         items.removeClass('active-description');
-        
     
         if (description.width() == 0) {
             description.addClass('active-description');
@@ -214,44 +183,28 @@ if (windowWidth > 768) {
             description.removeClass('.active-description');
         }
     })
-    
-    
     $('.color__close-button').click( e => {
         const item = $(e.currentTarget);
         const description = item.closest('.color__description');
     
         description.removeClass('active-description');
     })
-
 } else if (windowWidth <= 480) {
     console.log('Аккордеон Mobile')
-
     $('.color__title').click( e => {
-
         const item = $(e.currentTarget);
         const description = item.siblings('.color__description');
-    
         const items = $('.color__description');
+        const container1 = item.closest('.colors__list');
+        const titleBlocks1 = container1.find('.color__title');
         items.removeClass('active-description');
         items[0].style.width = '0px';
         items[1].style.width = '0px';
         items[2].style.width = '0px';
-
-        const container1 = item.closest('.colors__list');
-
-        const titleBlocks1 = container1.find('.color__title');
-
-        /*titleBlocks1[0].style.display = 'none';
-        titleBlocks1[1].style.display = 'none';
-        titleBlocks1[2].style.display = 'none';
-
-        e.currentTarget.style.display = 'block';*/
     
         if (description.width() == 0) {
             description.addClass('active-description');
-            
             description[0].style.width = mesureWidth(item);
-            
         } else {
             description.width(0)
             description.removeClass('.active-description');
@@ -261,94 +214,63 @@ if (windowWidth > 768) {
             titleBlocks1[1].style.display = 'block';
             titleBlocks1[2].style.display = 'block';
         }
-
-        
     })
 
     $('#gray').click(e => {
-        console.log('click gray')
-
         const item = $(e.currentTarget);
         const container1 = item.closest('.colors__list');
-
-
         const transform = container1[0].style.transform
 
-
         if (transform == 'translateX(0px)' || transform == '') {
-
             container1[0].style.transform = 'translateX(90px)'
         } else if (transform == 'translateX(90px)') {
-
             container1[0].style.transform = 'translateX(0px)'
         } 
     })
     
     $('#black').click(e => {
-        console.log('click black')
-
         const item = $(e.currentTarget);
         const container1 = item.closest('.colors__list');
-
         container1[0].style.transform = 'translateX(0px)'
     })
 
     $('#red').click(e => {
-        console.log('click red')
-
         const item = $(e.currentTarget);
         const container1 = item.closest('.colors__list');
-
-        //container1[0].style.transform = 'translateX(-90px)'
-
         const transform = container1[0].style.transform
 
-
         if (transform == 'translateX(0px)' || transform == '') {
-
             container1[0].style.transform = 'translateX(-90px)'
         } else if (transform == 'translateX(-90px)') {
-
             container1[0].style.transform = 'translateX(0px)'
         } 
     })
     
-    
     $('.color__close-button').click( e => {
         const item = $(e.currentTarget);
         const description = item.closest('.color__description');
-    
         description.removeClass('active-description');
     })
 } else if (windowWidth <= 768) {
     console.log('Аккордеон Tablet')
-
     $('.color__title').click( e => {
-
         const item = $(e.currentTarget);
         const description = item.siblings('.color__description');
-    
         const items = $('.color__description');
         items.removeClass('active-description');
         items[0].style.width = '0px';
         items[1].style.width = '0px'
         items[2].style.width = '0px'
-
-
     
         if (description.width() == 0) {
             description.addClass('active-description');
-            
             description[0].style.width = mesureWidth(item);
-            
         } else {
             description.width(0)
             description.removeClass('.active-description');
             description[0].style.width = '0px'
         }
-        
     })
-    
     
     $('.color__close-button').click( e => {
         const item = $(e.currentTarget);
@@ -359,9 +281,7 @@ if (windowWidth > 768) {
 } 
 
 
-
 //onepage scroll 
-
 const sections = $('.section');
 const display = $('.maincontent');
 
@@ -371,15 +291,14 @@ const performTransition = sectionEq => {
         transform: `translateY(${position}%)`
     })
 }
-
 const sideUpdate = transitionNumber => {
     const sideMenu = $('.fixed-menu');
     sideMenu.find('.fixed-menu__item').removeClass('fixed-menu__item-active')
     sideMenu.find('.fixed-menu__item').eq(transitionNumber).addClass('fixed-menu__item-active');
 }
 
-var transitionNumber = 0;
-var inScroll = false;
+let transitionNumber = 0;
+let inScroll = false;
 
 $(window).on('wheel', e => {
     const deltaY = e.originalEvent.deltaY;
@@ -405,7 +324,6 @@ $(window).on('wheel', e => {
             inScroll = false;
         }, 200);
     }
-
     sideUpdate(transitionNumber)
 })
 
@@ -437,7 +355,6 @@ $("body").swipe( {
     }
 });
 
-
 $('[data-scroll-to]').click( e => {
     e.preventDefault();
 
@@ -455,7 +372,6 @@ $('[data-scroll-to]').click( e => {
 
 
 //Яндекс карты
-
 let myMap;
 
 const init = () => {
