@@ -14,11 +14,11 @@
 
 .reviews__list {
     min-height: rem(350px);
+    margin-bottom: rem(40px);
     position: relative;
 
     @include tablets {
         min-height: rem(450px);
-        margin-bottom: rem(40px);
     }
 }
 
@@ -140,9 +140,26 @@
     margin-right: rem(6px);
     overflow: hidden;
     border-radius: 50%;
+    border: rem(5px) solid #f8faf9;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 
     &:last-child {
         margin-right: 0;
+    }
+
+    &.one {
+        background-image: url('../img/icons_png/avatar_billy.png');
+    }
+
+    &.two {
+        background-image: url('../img/icons_png/avatar_vadim.png')
+    }
+
+    &.three {
+        background-image: url('../img/icons_png/avatar_maria.png')
     }
 
     @include tablets {
@@ -160,13 +177,8 @@
 .active-avatar {
     border: rem(5px) solid #E01F3D;
     border-radius: 50%;
-    box-sizing: content-box;
 
     @include phones {
         border: rem(4px) solid #E01F3D;
     }
-}
-
-.reviews__selector-item-img {
-    object-fit: cover;
 }

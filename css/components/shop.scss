@@ -94,8 +94,10 @@
 
 .slider__slide {
     display: flex;
+    padding: 0 16px;
 
     @include tablets {
+        padding: 0;
         flex-direction: column;
         align-items: center;
         width: 90%;

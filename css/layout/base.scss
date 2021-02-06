@@ -96,7 +96,18 @@ button {
     height: 100%;
     min-height: rem(650px);
     position: relative;
+
+    &.team {
+        padding-top: 18%;
+        justify-content: unset;
+
+        @include phones {
+            padding-top: 0;
+            justify-content: center;
+        }
+    }
 }
+
 
 .section__title {
     font-family: Play;

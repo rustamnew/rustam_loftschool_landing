@@ -86,7 +86,7 @@ const findBlockByAlias = (alias) => {
     });
 }
 
-$('.reviews__selector-item-link').click((e) => {
+$('.reviews__selector-item').click((e) => {
     e.preventDefault();
 
     const $this = $(e.currentTarget);

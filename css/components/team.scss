@@ -1,5 +1,9 @@
 .team-section__title {
     margin-bottom: rem(53px);
+
+    @include phones {
+        margin-bottom: rem(30px);
+    }
 }
 
 .team__list {

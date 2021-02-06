@@ -81,6 +81,16 @@ button {
   min-height: 36.1111111111rem;
   position: relative;
 }
+.section.team {
+  padding-top: 18%;
+  justify-content: unset;
+}
+@media screen and (max-width: 480px) {
+  .section.team {
+    padding-top: 0;
+    justify-content: center;
+  }
+}
 
 .section__title {
   font-family: Play;
@@ -558,12 +568,12 @@ button {
 
 .reviews__list {
   min-height: 19.4444444444rem;
+  margin-bottom: 2.2222222222rem;
   position: relative;
 }
 @media screen and (max-width: 768px) {
   .reviews__list {
     min-height: 25rem;
-    margin-bottom: 2.2222222222rem;
   }
 }
 
@@ -692,9 +702,22 @@ button {
   margin-right: 0.3333333333rem;
   overflow: hidden;
   border-radius: 50%;
+  border: 0.2777777778rem solid #f8faf9;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 .reviews__selector-item:last-child {
   margin-right: 0;
+}
+.reviews__selector-item.one {
+  background-image: url("../img/icons_png/avatar_billy.png");
+}
+.reviews__selector-item.two {
+  background-image: url("../img/icons_png/avatar_vadim.png");
+}
+.reviews__selector-item.three {
+  background-image: url("../img/icons_png/avatar_maria.png");
 }
 @media screen and (max-width: 768px) {
   .reviews__selector-item {
@@ -712,16 +735,11 @@ button {
 .active-avatar {
   border: 0.2777777778rem solid #E01F3D;
   border-radius: 50%;
-  box-sizing: content-box;
 }
 @media screen and (max-width: 480px) {
   .active-avatar {
     border: 0.2222222222rem solid #E01F3D;
   }
-}
-
-.reviews__selector-item-img {
-  object-fit: cover;
 }
 
 .delivery {
@@ -1173,9 +1191,11 @@ button {
 
 .slider__slide {
   display: flex;
+  padding: 0 16px;
 }
 @media screen and (max-width: 768px) {
   .slider__slide {
+    padding: 0;
     flex-direction: column;
     align-items: center;
     width: 90%;
@@ -1464,6 +1484,11 @@ button {
 
 .team-section__title {
   margin-bottom: 2.9444444444rem;
+}
+@media screen and (max-width: 480px) {
+  .team-section__title {
+    margin-bottom: 1.6666666667rem;
+  }
 }
 
 .team__list-desktop {
