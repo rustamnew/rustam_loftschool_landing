@@ -77,12 +77,13 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   height: 100%;
   min-height: 36.1111111111rem;
   position: relative;
 }
 .section.team {
-  padding-top: 18%;
+  padding-top: 10%;
   justify-content: unset;
 }
 @media screen and (max-width: 480px) {
